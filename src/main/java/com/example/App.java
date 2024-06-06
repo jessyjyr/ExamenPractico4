@@ -4,31 +4,58 @@ public class App {
 
 	public static void main(String[] args) {
 
-		Object[] empleadosYEstudiantes = {
-				Empleado.builder().nombre("Leo").primerApellido("Rojas").segundoApellido("Casas").genero(Genero.HOMBRE)
-						.departamento("RRHH").salario(1500.50).build(),
-				Empleado.builder().nombre("Victor").primerApellido("Rios").segundoApellido("Torres")
-						.genero(Genero.HOMBRE).departamento("RRHH").salario(2200.50).build(),
+		Object[] estudiantesMujeres = {
 				Estudiante.builder().nombre("Maria").primerApellido("alas").segundoApellido("Rios").genero(Genero.MUJER)
 						.facultad(Facultad.CIENCIAS).totalAsignaturasMatriculadas(4).build(),
-				Estudiante.builder().nombre("Roberto").primerApellido("Perez").segundoApellido("Reverte")
-						.genero(Genero.HOMBRE).facultad(Facultad.LENGUA).totalAsignaturasMatriculadas(2).build(), };
+				Estudiante.builder().nombre("Leyre").primerApellido("Talas").segundoApellido("Rojas")
+						.genero(Genero.MUJER).facultad(Facultad.LENGUA).totalAsignaturasMatriculadas(2).build() };
 
-		for (Object object : empleadosYEstudiantes) {
-			if (object instanceof Empleado) {
-				Empleado em = (Empleado) object;
-				System.out.println("Nombre del empleado: " + em.getNombre());
+		System.out.println("Recorriendo el array de Estudiantes: ......................................");
+		for (Object object : estudiantesMujeres) {
+			System.out.println(estudiantesMujeres);
 
-			} else if (object instanceof Estudiante) {
-				Estudiante es = (Estudiante) object;
-				System.out.println("El nombre del estudiante es: " + es.getNombre());
-				System.out.println("La Facultad del estudiante es: " + es.getFacultad());
-				System.out
-						.println("El total de asignaturas del estudiante son: " + es.getTotalAsignaturasMatriculadas());
-
+			int totalAsignaturas = 0;
+			int toEstudiantes = 0;
+			for (Object object1 : estudiantesMujeres) {
+				if (object instanceof Estudiante) {
+					Estudiante estudiante = (Estudiante) object;
+					totalAsignaturas += estudiante.getTotalAsignaturasMatriculadas();
+					toEstudiantes++;
+				}
 			}
 
-		}
+			double mediaAsignaturas = (double) totalAsignaturas / toEstudiantes;
 
+			int estudianteMujeres = 0;
+			for (Object object2 : estudiantesMujeres) {
+				if (object instanceof Estudiante) {
+					Estudiante estudiante = (Estudiante) object;
+					if (estudiante.getGenero() == Genero.MUJER
+							&& estudiante.getTotalAsignaturasMatriculadas() >= mediaAsignaturas) {
+						estudianteMujeres++;
+
+						for (Object object_2 : estudiantesMujeres) {
+							System.out.println("Nombre: " + estudiante.getNombre());
+							System.out.println("Facultad: " + estudiante.getFacultad());
+							System.out.println(
+									"Total Asignaturas Matriculadas: " + estudiante.getTotalAsignaturasMatriculadas());
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+						}
+
+					}
+				}
+			}
+		}
 	}
 }
